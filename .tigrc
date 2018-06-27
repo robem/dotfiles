@@ -5,20 +5,20 @@ bind status a !?git commit --amend -C HEAD
 
 # Main UI
 # ==============================================================================
-color default           250             232
+color default           250             233
 color 'Author '         15              default
 color 'Commit: '        242             default
 color 'Merge: '         45              default
 color id                167             default
 color date              242             default
-color graph-commit      169             default
+color graph-commit      131             default
 color status            15              default
 color delimiter         90              default
 color cursor            234             7
 
 # Help Page
 # ==============================================================================
-color help-group        169             default
+color help-group        131             default
 
 # Current Line
 # ==============================================================================
@@ -37,6 +37,6 @@ color title-blur        234             250
 # ==============================================================================
 color diff-stat         45              default
 color diff-index        14              default
-color diff-add          40              default
-color diff-del          169             default
-color diff-chunk        190             default
+color diff-add          72              default
+color diff-del          131             default
+color diff-chunk        172             default
