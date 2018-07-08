@@ -1,0 +1,6 @@
+[user]
+	name = robem
+	email = robem@posteo.de
+[alias]
+	s = status
+	d = diff
