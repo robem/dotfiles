@@ -8,7 +8,7 @@ bind status a !?git commit --amend -C HEAD
 color default           250             233
 color 'Author '         15              default
 color 'Commit: '        242             default
-color 'Merge: '         45              default
+color 'Merge: '         117              default
 color id                167             default
 color date              242             default
 color graph-commit      131             default
@@ -35,7 +35,7 @@ color title-blur        234             250
 
 # File Diffs
 # ==============================================================================
-color diff-stat         45              default
+color diff-stat         117             default
 color diff-index        14              default
 color diff-add          72              default
 color diff-del          131             default
