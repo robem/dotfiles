@@ -1,3 +1,5 @@
+set vertical-split = no
+
 bind status a !?git commit --amend -C HEAD
 
 # Area                  Foreground      Background         Options
