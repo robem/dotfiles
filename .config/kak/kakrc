@@ -1,4 +1,4 @@
-colorscheme desertex
+colorscheme default
 
 # Custom key mappings
 
@@ -49,3 +49,6 @@ hook -group TrailingWhitespaces global WinCreate .* %{
 hook -group TrailingWhitespaces global WinCreate .* %{
     addhl regex 'TODO|FIXME' 0:white,yellow
 }
+
+# Show line numbers
+add-highlighter global/ number-lines
