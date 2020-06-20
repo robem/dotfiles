@@ -50,5 +50,10 @@ hook -group TrailingWhitespaces global WinCreate .* %{
     addhl regex 'TODO|FIXME' 0:white,yellow
 }
 
+# Rust fmt
+hook global WinSetOption filetype=rust %{
+  set window formatcmd 'rustfmt'
+}
+
 # Show line numbers
 add-highlighter global/ number-lines
