@@ -1,11 +1,35 @@
-colorscheme default
+# Plugins
+source "%val{config}/plugins/plug.kak/rc/plug.kak"
+plug "andreyorst/plug.kak" noload
+plug "andreyorst/fzf.kak"
+plug "evanrelf/primer.kak" theme
+
+# LSP
+plug "kak-lsp/kak-lsp" do %{
+  cargo install --locked --force --path .
+  mkdir -p ~/.config/kak-lsp
+  cp -n kak-lsp.toml ~/.config/kak-lsp/
+}
+
+hook global WinSetOption filetype=rust %{
+  set-option window formatcmd 'rustfmt'
+  lsp-enable-window
+}
+
+hook global WinSetOption filetype=(html|htm|xml) %{
+  set-option window formatcmd 'tidy -i'
+}
 
 # Custom key mappings
 
 # Paste from global clipboard (like vim 'P' and 'p')
 map -docstring "Paste before" global user P '!xsel -b -o<ret>'
 map -docstring "Paste after" global user p '<a-!>xsel -b -o<ret>'
-map -docstring "fzf-file" global user f ':fzf-file<ret>'
+map -docstring "fzf-mode" global user f ':fzf-mode<ret>'
+map -docstring "LSP mode" global user l %{: enter-user-mode lsp<ret>}
+
+# User modes
+map -docstring "LSP" global user l ':enter-user-mode lsp<ret>'
 
 # Case insensitive search
 map -docstring 'case insensitive search' global user / '/(?i)'
@@ -13,13 +37,14 @@ map -docstring 'case insensitive backward search' global user <a-/> '<a-/>(?i)'
 map -docstring 'case insensitive extend search' global user ? '?(?i)'
 map -docstring 'case insensitive backward extend-search' global user <a-?> '<a-?>(?i)'
 
+# Indentation
+set-option global tabstop 2
+set-option global indentwidth 2
+
 # Copy to global clipboard on each 'y', 'd', 'c' selection
 hook global NormalKey y|d|c %{ nop %sh{
   printf %s "$kak_reg_dquote" | xsel --input --clipboard
 }}
-
-# Enable line numbers
-hook -group line-numbers global WinCreate .* %{addhl global/ number_lines}
 
 # Enable autowrapping for emails
 hook -group mail-wrap global WinSetOption filetype=mail %{
@@ -27,33 +52,7 @@ hook -group mail-wrap global WinSetOption filetype=mail %{
     set buffer autowrap_format_paragraph true
 }
 
-# FZF file search
-def -docstring 'invoke fzf to open a file' \
-  fzf-file %{ %sh{
-    if [ -z "$TMUX" ]; then
-      echo echo only works inside tmux
-    else
-      FILE=$(rg -L --hidden --files | fzf-tmux)
-      if [ -n "$FILE" ]; then
-        printf 'eval -client %%{%s} edit %%{%s}\n' "${kak_client}" "${FILE}" | kak -p "${kak_session}"
-      fi
-    fi
-  } }
-
-# Highlight trailing whitespaces in red
-hook -group TrailingWhitespaces global WinCreate .* %{
-    addhl regex '\h+$' 0:default,red
-}
-
-# Highlight TODO and FIXME statements
-hook -group TrailingWhitespaces global WinCreate .* %{
-    addhl regex 'TODO|FIXME' 0:white,yellow
-}
-
-# Rust fmt
-hook global WinSetOption filetype=rust %{
-  set window formatcmd 'rustfmt'
-}
-
 # Show line numbers
 add-highlighter global/ number-lines
+
+colorscheme kaleidoscope-light
