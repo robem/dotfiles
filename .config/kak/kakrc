@@ -25,11 +25,16 @@ hook global WinSetOption filetype=(html|htm|xml) %{
 # Paste from global clipboard (like vim 'P' and 'p')
 map -docstring "Paste before" global user P '!xsel -b -o<ret>'
 map -docstring "Paste after" global user p '<a-!>xsel -b -o<ret>'
-map -docstring "fzf-mode" global user f ':fzf-mode<ret>'
-map -docstring "LSP mode" global user l %{: enter-user-mode lsp<ret>}
 
-# User modes
+# Find/Open file
+map -docstring "fzf-mode" global user f ':fzf-mode<ret>'
+
+# LSP
 map -docstring "LSP" global user l ':enter-user-mode lsp<ret>'
+
+# Comment lines
+map -docstring "Comment line" global user c ':comment-line<ret>'
+map -docstring "Comment line" global user C ':comment-block<ret>'
 
 # Case insensitive search
 map -docstring 'case insensitive search' global user / '/(?i)'
