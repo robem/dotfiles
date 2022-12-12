@@ -1,8 +1,8 @@
-export TERM="xterm-256color"
-export EDITOR="kak"
-export BROWSER="firefox"
+# US & DE layout; Hold both (left and right) shifts to switch
+setxkbmap -layout us,de
+setxkbmap us,de -option 'grp:shifts_toggle'
 
-# Set Mod4 key to CapsLock
+# Set ModKey used by window manager
 xmodmap -e "clear lock"
 xmodmap -e "keysym Caps_Lock = Super_L Caps_Lock"
 
@@ -12,7 +12,13 @@ xset r rate 250 50
 # Turn off the F**K bell
 xset -b
 
-# dwm status line
-xsetroot -name "$(date +%Z%Y-%m-%dT%H:%M)"
+export TERM=st-256color
+export COLORTERM=truecolor
+export TERMINAL=/usr/bin/st
+export SHELL=/bin/bash
+export EDITOR=/usr/bin/kak
+export BROWSER=/usr/bin/firefox
 
-exec dwm
+export I3RS_GITHUB_TOKEN=$(cat ~/.github_token)
+
+exec i3
