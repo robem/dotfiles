@@ -1,7 +1,9 @@
-# Plugins
+# Plugin manager
 source "%val{config}/plugins/plug.kak/rc/plug.kak"
 plug "andreyorst/plug.kak" noload
+# Plugins
 plug "andreyorst/fzf.kak"
+plug "https://gitlab.com/Screwtapello/kakoune-cargo"
 plug "evanrelf/primer.kak" theme
 
 # LSP
@@ -28,6 +30,10 @@ map -docstring "Paste after" global user p '<a-!>xsel -b -o<ret>'
 
 # Find/Open file
 map -docstring "fzf-mode" global user f ':fzf-mode<ret>'
+
+# Cargo
+map -docstring "Cargo" global user m ':enter-user-mode cargo<ret>'
+map -docstring "Run clippy" global cargo C %{: cargo clippy<ret>}
 
 # LSP
 map -docstring "LSP" global user l ':enter-user-mode lsp<ret>'
