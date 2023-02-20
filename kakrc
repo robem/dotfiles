@@ -4,7 +4,9 @@ plug "andreyorst/plug.kak" noload
 # Plugins
 plug "andreyorst/fzf.kak"
 plug "https://gitlab.com/Screwtapello/kakoune-cargo"
-plug "evanrelf/primer.kak" theme
+
+# Let's see what my fingers do
+set-option global autoinfo command|onkey|normal
 
 # LSP
 plug "kak-lsp/kak-lsp" do %{
@@ -15,6 +17,10 @@ plug "kak-lsp/kak-lsp" do %{
 
 hook global WinSetOption filetype=rust %{
   set-option window formatcmd 'rustfmt'
+  lsp-enable-window
+}
+
+hook global WinSetOption filetype=(c|cpp) %{
   lsp-enable-window
 }
 
@@ -66,4 +72,4 @@ hook -group mail-wrap global WinSetOption filetype=mail %{
 # Show line numbers
 add-highlighter global/ number-lines
 
-colorscheme kaleidoscope-light
+colorscheme kaleidoscope-light-mod
