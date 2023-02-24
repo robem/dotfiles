@@ -5,8 +5,10 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-// static char *font = "IBMPlexMono-Regular:pixelsize=20:antialias=true:autohint=true";
-static char *font = "Source Code Pro:pixelsize=14:authint=false:antialias=true";
+//static char *font = "Liberation Mono:pixelsize=13:antialias=true:autohint=true";
+//static char *font = "Noto Sans Mono:pixelsize=14:antialias=true:autohint=true";
+//static char *font = "FiraCode Nerd Font Mono:style=Retina:pixelsize=12:antialias=true:autohint=true";
+static char *font = "IosevkaTerm Nerd Font Mono:style=Regular:pixelsize=15:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -17,7 +19,7 @@ static int borderpx = 2;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/fish";
+static char *shell = "/bin/sh";
 char *utmp = NULL;
 /* scroll program: to enable use a string like "scroll" */
 char *scroll = NULL;
@@ -94,42 +96,42 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
-// See colorscheme.h for more
-// monokai.dark
-const char *colorname[] = {
+// *********** terminal.sexy default.dark ********************
+/* Terminal colors (16 first used in escape sequence) */
+static const char *colorname[] = {
+
   /* 8 normal colors */
-  [0] = "#272822", /* black   */
-  [1] = "#f92672", /* red     */
-  [2] = "#a6e22e", /* green   */
+  [0] = "#151515", /* black   */
+  [1] = "#ac4142", /* red     */
+  [2] = "#90a959", /* green   */
   [3] = "#f4bf75", /* yellow  */
-  [4] = "#66d9ef", /* blue    */
-  [5] = "#ae81ff", /* magenta */
-  [6] = "#a1efe4", /* cyan    */
-  [7] = "#f8f8f2", /* white   */
+  [4] = "#6a9fb5", /* blue    */
+  [5] = "#aa759f", /* magenta */
+  [6] = "#75b5aa", /* cyan    */
+  [7] = "#d0d0d0", /* white   */
 
   /* 8 bright colors */
-  [8]  = "#75715e", /* black   */
-  [9]  = "#f92672", /* red     */
-  [10] = "#a6e22e", /* green   */
+  [8]  = "#505050", /* black   */
+  [9]  = "#ac4142", /* red     */
+  [10] = "#90a959", /* green   */
   [11] = "#f4bf75", /* yellow  */
-  [12] = "#66d9ef", /* blue    */
-  [13] = "#ae81ff", /* magenta */
-  [14] = "#a1efe4", /* cyan    */
-  [15] = "#f9f8f5", /* white   */
+  [12] = "#6a9fb5", /* blue    */
+  [13] = "#aa759f", /* magenta */
+  [14] = "#75b5aa", /* cyan    */
+  [15] = "#f5f5f5", /* white   */
 
   /* special colors */
-  [256] = "#272822", /* background */
-  [257] = "#f8f8f2", /* foreground */
+  [256] = "#151515", /* background */
+  [257] = "#d0d0d0", /* foreground */
 };
 
 /*
  * Default colors (colorname index)
- * foreground, background, cursor, reverse cursor
+ * foreground, background, cursor
  */
 unsigned int defaultfg = 257;
 unsigned int defaultbg = 256;
 unsigned int defaultcs = 257;
-unsigned int defaultrcs = 256;
 
 /*
  * Colors used, when the specific fg == defaultfg. So in reverse mode this
@@ -138,6 +140,9 @@ unsigned int defaultrcs = 256;
  */
 static unsigned int defaultitalic = 7;
 static unsigned int defaultunderline = 7;
+// *********** terminal.sexy default.dark ********************
+
+static unsigned int defaultrcs = 257;
 
 /*
  * Default shape of cursor
@@ -158,7 +163,7 @@ static unsigned int rows = 24;
 /*
  * Default colour and shape of the mouse cursor
  */
-static unsigned int mouseshape = XC_left_ptr;
+static unsigned int mouseshape = XC_xterm;
 static unsigned int mousefg = 7;
 static unsigned int mousebg = 0;
 
