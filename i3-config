@@ -12,7 +12,7 @@ set $mod Mod4
 
 # Font for window titles and status bar unless overwritten in the bar {} block
 #font pango:DejaVu Sans Mono 8
-font pango:IosevkaTerm Nerd Font 16px
+font pango:IosevkaTerm Nerd Font 12px
 
 # Reload configuration file
 bindsym $mod+Shift+c reload
@@ -92,7 +92,7 @@ bar {
 	status_command i3status-rs
 	#font pango:DejaVu Sans Mono, Font Awesome 6 Free 10
 	#font pango:FiraCode Nerd Font 14px
-	#font pango:IosevkaTerm Nerd Font 16px
+	font pango:IosevkaTerm Nerd Font 16px
     colors {
 		separator #1c1b19
 		background #1c1b19
