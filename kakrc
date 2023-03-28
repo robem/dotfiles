@@ -26,7 +26,7 @@ hook global WinSetOption filetype=rust %{
 
 hook global WinSetOption filetype=(c|cpp) %{
   lsp-enable-window
-  # Make
+  set window formatcmd clang-format
   map -docstring "Make" global user m ':make<ret>'
 }
 
